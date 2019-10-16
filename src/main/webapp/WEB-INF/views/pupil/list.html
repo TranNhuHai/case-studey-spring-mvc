@@ -22,7 +22,7 @@
         <td th:text="${pupil.getPhone()}"></td>
         <td th:text="${pupil.getMail()}"></td>
         <td><a th:href="@{edit-pupil/{id}(id=${pupil.getId()})}">edit</a></td>
-        <td><a th:href="@{delete-customer/{id}(id=${pupil.getId()})}">delete</a></td>
+        <td><a th:href="@{delete-pupil/{id}(id=${pupil.getId()})}">delete</a></td>
 
     </tr>
 </table>
