@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import vn.study.model.LearnClass;
@@ -36,5 +37,46 @@ public class LearnClassController {
         modelAndView.addObject("learnClass", new LearnClass());
         modelAndView.addObject("message", "add new successfully");
         return modelAndView;
+    }
+    @GetMapping("/edit-class/{id}")
+    public ModelAndView showEditForm(@PathVariable Integer id) {
+        LearnClass learnClass = learnClassService.findById(id);
+        if (learnClass != null) {
+            ModelAndView modelAndView = new ModelAndView("/class/edit");
+            modelAndView.addObject("learnClass", learnClass);
+            return modelAndView;
+
+        } else {
+            ModelAndView modelAndView = new ModelAndView("/error.404");
+            return modelAndView;
+        }
+    }
+
+    @PostMapping("/edit-class")
+    public ModelAndView updatePupil(@ModelAttribute("learnClass") LearnClass learnClass) {
+        learnClassService.save(learnClass);
+        ModelAndView modelAndView = new ModelAndView("/class/edit");
+        modelAndView.addObject("learnClass", learnClass);
+        modelAndView.addObject("message", " Updated successfully");
+        return modelAndView;
+    }
+    @GetMapping("/delete-class/{id}")
+    public ModelAndView showDeleteForm(@PathVariable Integer id){
+        LearnClass learnClass = learnClassService.findById(id);
+        if(learnClass != null) {
+            ModelAndView modelAndView = new ModelAndView("/class/delete");
+            modelAndView.addObject("learnClass", learnClass);
+            return modelAndView;
+
+        }else {
+            ModelAndView modelAndView = new ModelAndView("/error.404");
+            return modelAndView;
+        }
+    }
+
+    @PostMapping("/delete-class")
+    public String deletePupil(@ModelAttribute("learnClass") LearnClass learnClass){
+        learnClassService.remove(learnClass.getId());
+        return "redirect:class";
     }
 }
