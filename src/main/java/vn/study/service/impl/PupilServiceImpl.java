@@ -8,6 +8,7 @@ import vn.study.service.PupilService;
 public class PupilServiceImpl implements PupilService {
     @Autowired
     private PupilRepository pupilRepository;
+
     @Override
     public Iterable<Pupil> findAll() {
         return pupilRepository.findAll();
@@ -15,16 +16,17 @@ public class PupilServiceImpl implements PupilService {
 
     @Override
     public Pupil findById(Long id) {
-        return null;
+        return pupilRepository.findOne(id);
     }
 
     @Override
     public void save(Pupil pupil) {
-
+        pupilRepository.save(pupil);
     }
 
     @Override
     public void remove(Long id) {
+        pupilRepository.delete(id);
 
     }
 }
