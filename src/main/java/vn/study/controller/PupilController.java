@@ -36,7 +36,7 @@ public class PupilController {
         pupilService.save(pupil);
         ModelAndView modelAndView = new ModelAndView("/pupil/create");
         modelAndView.addObject("pupil", new Pupil());
-        modelAndView.addObject("message", "add new pupil successfully");
+        modelAndView.addObject("message", "add new successfully");
         return modelAndView;
     }
 

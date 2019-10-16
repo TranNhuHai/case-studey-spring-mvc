@@ -9,7 +9,9 @@
 <p>
     <a href="/pupils">Customer list</a>
 </p>
-
+<th:block th:if="${message}">
+    <p style="color: red" th:text="${message}"></p>
+</th:block>
 <form th:action="@{/create-pupil}" th:object="${pupil}" method="post">
     <table>
         <tr>
