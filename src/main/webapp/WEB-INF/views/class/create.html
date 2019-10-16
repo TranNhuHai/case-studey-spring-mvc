@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Create province</title>
 </head>
 <body>
-
+<h1>Create Class</h1>
+<p>
+    <a href="/class">Class list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-class}" th:object="${learnClass}" method="post">
+    <table style="width: 50%; position: center">
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create class"></td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>
