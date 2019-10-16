@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Class</title>
 </head>
 <body>
-
+<a href="/create-class">Create new province</a>
+<h1>Classes</h1>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="learnClass : ${learnClasses}">
+        <tr>
+            <td><a th:href="@{/view-class/__${learnClass.id}__}" th:text="${learnClass.name}"></a></td>
+            <td><a th:href="@{/edit-class/__${learnClass.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-class/__${learnClass.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
 </body>
 </html>

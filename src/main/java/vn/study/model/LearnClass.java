@@ -10,16 +10,15 @@ public class LearnClass {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     private String name;
-    @OneToMany(mappedBy = "LearnClass")
-    private Set<Pupil> pupil;
 
     public LearnClass() {
     }
 
-    public LearnClass(int id, String name) {
-        this.id = id;
+    public LearnClass(String name) {
         this.name = name;
     }
+
+
 
     public int getId() {
         return id;

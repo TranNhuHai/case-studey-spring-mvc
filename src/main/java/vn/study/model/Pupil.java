@@ -12,22 +12,33 @@ public class Pupil {
     private String phone;
     private String mail;
 
+    @ManyToOne
+    @JoinColumn(name = "LearnClass_id")
+    private LearnClass learnClass;
+
+    public Pupil() {
+
+    }
+
+    public Pupil(String name, String phone, String mail) {
+        this.name = name;
+        this.phone = phone;
+        this.mail = mail;
+    }
+
+    public Pupil(String name, String phone, String mail, LearnClass learnClass) {
+        this.name = name;
+        this.phone = phone;
+        this.mail = mail;
+        this.learnClass = learnClass;
+    }
+
     public String getMail() {
         return mail;
     }
 
     public void setMail(String mail) {
         this.mail = mail;
-    }
-
-    public Pupil() {
-
-    }
-
-    public Pupil(Long id, String name, String aClass, String phone) {
-        this.id = id;
-        this.name = name;
-        this.phone = phone;
     }
 
     public Long getId() {
@@ -52,5 +63,13 @@ public class Pupil {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public LearnClass getLearnClass() {
+        return learnClass;
+    }
+
+    public void setLearnClass(LearnClass learnClass) {
+        this.learnClass = learnClass;
     }
 }

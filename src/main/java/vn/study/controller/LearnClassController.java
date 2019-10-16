@@ -16,7 +16,7 @@ public class LearnClassController {
         Iterable<LearnClass> learnClasses = learnClassService.findAll();
 
         ModelAndView modelAndView = new ModelAndView("/class/list");
-        modelAndView.addObject("class", learnClasses);
+        modelAndView.addObject("learnClasses", learnClasses);
         return modelAndView;
     }
 }
