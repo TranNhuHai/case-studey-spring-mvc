@@ -62,4 +62,23 @@ public class PupilController {
         modelAndView.addObject("message", " Updated successfully");
         return modelAndView;
     }
+    @GetMapping("/delete-pupil/{id}")
+    public ModelAndView showDeleteForm(@PathVariable Long id){
+        Pupil pupil = pupilService.findById(id);
+        if(pupil != null) {
+            ModelAndView modelAndView = new ModelAndView("/pupil/delete");
+            modelAndView.addObject("pupil", pupil);
+            return modelAndView;
+
+        }else {
+            ModelAndView modelAndView = new ModelAndView("/error.404");
+            return modelAndView;
+        }
+    }
+
+    @PostMapping("/delete-pupil")
+    public String deletePupil(@ModelAttribute("pupil") Pupil pupil){
+        pupilService.remove(pupil.getId());
+        return "redirect:pupils";
+    }
 }
