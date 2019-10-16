@@ -1,10 +1,25 @@
 package vn.study.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "pupils")
 public class Pupil {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     private String name;
     private String aClass;
     private String phone;
+    private String mail;
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
 
     public Pupil() {
 

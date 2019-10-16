@@ -11,13 +11,20 @@ import vn.study.service.PupilService;
 public class PupilController {
     @Autowired
     private PupilService pupilService;
+
     @GetMapping("/pupils")
-    public ModelAndView listPupils(){
+    public ModelAndView listPupils() {
         Iterable<Pupil> pupils = pupilService.findAll();
 
         ModelAndView modelAndView = new ModelAndView("/pupil/list");
         modelAndView.addObject("pupils", pupils);
-        return modelAndView ;
+        return modelAndView;
     }
 
+    @GetMapping("/create-pupil")
+    public ModelAndView showCreateForm() {
+        ModelAndView modelAndView = new ModelAndView("/pupil/create");
+        modelAndView.addObject("pupil", new Pupil());
+        return modelAndView;
+    }
 }

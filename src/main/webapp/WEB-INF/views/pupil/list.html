@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pupils</title>
+</head>
+<body>
+<a href="/create-pupil">Add New Pupil</a>
+<h3>Pupils</h3>
+<table border="1" style="width: 100%">
+    <tr>
+        <th>ID</th>
+        <th>name</th>
+        <th>Phone</th>
+        <th>Mail</th>
+        <th>Class</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <tr th:each="pupil: ${pupils}">
+        <td th:text="${pupil.id}"></td>
+        <td th:text="${pupil.getName()}"></td>
+        <td th:text="${pupil.getPhone()}"></td>
+        <td th:text="${pupil.getaClass()}"></td>
+        <td th:text="${pupil.getMail()}"></td>
+        <td><a th:href="@{edit-pupil/{id}(id=${pupil.getId()})}">edit</a></td>
+        <td><a th:href="@{delete-customer/{id}(id=${pupil.getId()})}">delete</a></td>
+
+    </tr>
+</table>
+</body>
+</html>
