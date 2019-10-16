@@ -13,7 +13,7 @@ public class Pupil {
     private String mail;
 
     @ManyToOne
-    @JoinColumn(name = "LearnClass_id")
+    @JoinColumn(name = "classes_id")
     private LearnClass learnClass;
 
     public Pupil() {

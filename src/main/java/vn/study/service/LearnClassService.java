@@ -5,7 +5,8 @@ import vn.study.model.LearnClass;
 public interface LearnClassService {
     Iterable<LearnClass> findAll();
 
-    LearnClass findById(int id);
+    LearnClass findById(Integer id);
+    LearnClass findOne(Integer id);
 
     void save(LearnClass learnClass);
 

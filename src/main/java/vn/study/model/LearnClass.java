@@ -4,12 +4,15 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name ="LearnClass")
+@Table(name = "classes")
 public class LearnClass {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
+
+    @OneToMany(targetEntity = Pupil.class)
+    private Set<Pupil> pupils;
 
     public LearnClass() {
     }
@@ -17,7 +20,6 @@ public class LearnClass {
     public LearnClass(String name) {
         this.name = name;
     }
-
 
 
     public int getId() {

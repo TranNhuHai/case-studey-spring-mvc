@@ -15,7 +15,12 @@ public class LearnClassServiceImpl implements LearnClassService {
     }
 
     @Override
-    public LearnClass findById(int id) {
+    public LearnClass findById(Integer id) {
+        return learnClassRepository.findOne(id);
+    }
+
+    @Override
+    public LearnClass findOne(Integer id) {
         return learnClassRepository.findOne(id);
     }
 
@@ -27,6 +32,5 @@ public class LearnClassServiceImpl implements LearnClassService {
     @Override
     public void remove(int id) {
         learnClassRepository.delete(id);
-
     }
 }
