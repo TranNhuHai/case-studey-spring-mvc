@@ -1,4 +1,6 @@
 package vn.study.repository;
 
-public interface PupilRepository {
-}
+import org.springframework.data.repository.PagingAndSortingRepository;
+import vn.study.model.Pupil;
+
+public interface PupilRepository extends PagingAndSortingRepository<Pupil, Long> {}
