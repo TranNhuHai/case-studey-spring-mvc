@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import vn.study.model.LearnClass;
+import vn.study.model.Pupil;
 import vn.study.service.LearnClassService;
 import vn.study.service.PupilService;
 
@@ -82,5 +83,18 @@ public class LearnClassController {
         learnClassService.remove(learnClass.getId());
         return "redirect:class";
     }
+    @GetMapping("/view-class/{id}")
+    public ModelAndView viewLearnClass(@PathVariable("id") int id){
+        LearnClass learnClass = learnClassService.findById(id);
+        if(learnClass == null){
+            return new ModelAndView("/error.404");
+        }
 
+        Iterable<Pupil> pupils = pupilService.findAllByLearnClass(learnClass);
+
+        ModelAndView modelAndView = new ModelAndView("/class/view");
+        modelAndView.addObject("learnClass", learnClass);
+        modelAndView.addObject("pupils", pupils);
+        return modelAndView;
+    }
 }

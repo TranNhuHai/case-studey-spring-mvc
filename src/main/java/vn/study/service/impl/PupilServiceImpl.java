@@ -1,6 +1,7 @@
 package vn.study.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import vn.study.model.LearnClass;
 import vn.study.model.Pupil;
 import vn.study.repository.LearnClassRepository;
 import vn.study.repository.PupilRepository;
@@ -33,7 +34,10 @@ public class PupilServiceImpl implements PupilService {
 
     }
 
-
+    @Override
+    public Iterable<Pupil> findAllByLearnClass(LearnClass learnClass) {
+        return pupilRepository.findAllByLearnClass(learnClass);
+    }
 
 
 }

@@ -1,5 +1,6 @@
 package vn.study.service;
 
+import vn.study.model.LearnClass;
 import vn.study.model.Pupil;
 
 public interface PupilService {
@@ -13,4 +14,5 @@ public interface PupilService {
     void remove(Long id);
 
 
+    Iterable<Pupil> findAllByLearnClass(LearnClass learnClass);
 }
