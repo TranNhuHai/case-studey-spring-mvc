@@ -7,14 +7,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import vn.study.model.LearnClass;
 import vn.study.model.Pupil;
+import vn.study.service.LearnClassService;
 import vn.study.service.PupilService;
 
 @Controller
 public class PupilController {
     @Autowired
     private PupilService pupilService;
-
+@Autowired
+private LearnClassService learnClassService;
+@ModelAttribute("learnClasses")
+public Iterable<LearnClass> learnClasses(){
+    return learnClassService.findAll();
+}
     @GetMapping("/pupils")
     public ModelAndView listPupils() {
         Iterable<Pupil> pupils = pupilService.findAll();
