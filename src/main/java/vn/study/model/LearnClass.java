@@ -37,4 +37,12 @@ public class LearnClass {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Set<Pupil> getPupils() {
+        return pupils;
+    }
+
+    public void setPupils(Set<Pupil> pupils) {
+        this.pupils = pupils;
+    }
 }

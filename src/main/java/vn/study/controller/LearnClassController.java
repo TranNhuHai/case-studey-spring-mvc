@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import vn.study.model.LearnClass;
 import vn.study.service.LearnClassService;
+import vn.study.service.PupilService;
 
 @Controller
 public class LearnClassController {
     @Autowired
     private LearnClassService learnClassService;
+    @Autowired
+    private PupilService pupilService;
     @GetMapping("/class")
     public ModelAndView listLearnClass(){
         Iterable<LearnClass> learnClasses = learnClassService.findAll();
@@ -79,4 +82,5 @@ public class LearnClassController {
         learnClassService.remove(learnClass.getId());
         return "redirect:class";
     }
+
 }

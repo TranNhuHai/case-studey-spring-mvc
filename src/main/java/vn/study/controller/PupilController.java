@@ -16,12 +16,14 @@ import vn.study.service.PupilService;
 public class PupilController {
     @Autowired
     private PupilService pupilService;
-@Autowired
-private LearnClassService learnClassService;
-@ModelAttribute("learnClasses")
-public Iterable<LearnClass> learnClasses(){
-    return learnClassService.findAll();
-}
+    @Autowired
+    private LearnClassService learnClassService;
+
+    @ModelAttribute("learnClasses")
+    public Iterable<LearnClass> learnClasses() {
+        return learnClassService.findAll();
+    }
+
     @GetMapping("/pupils")
     public ModelAndView listPupils() {
         Iterable<Pupil> pupils = pupilService.findAll();
@@ -69,22 +71,23 @@ public Iterable<LearnClass> learnClasses(){
         modelAndView.addObject("message", " Updated successfully");
         return modelAndView;
     }
+
     @GetMapping("/delete-pupil/{id}")
-    public ModelAndView showDeleteForm(@PathVariable Long id){
+    public ModelAndView showDeleteForm(@PathVariable Long id) {
         Pupil pupil = pupilService.findById(id);
-        if(pupil != null) {
+        if (pupil != null) {
             ModelAndView modelAndView = new ModelAndView("/pupil/delete");
             modelAndView.addObject("pupil", pupil);
             return modelAndView;
 
-        }else {
+        } else {
             ModelAndView modelAndView = new ModelAndView("/error.404");
             return modelAndView;
         }
     }
 
     @PostMapping("/delete-pupil")
-    public String deletePupil(@ModelAttribute("pupil") Pupil pupil){
+    public String deletePupil(@ModelAttribute("pupil") Pupil pupil) {
         pupilService.remove(pupil.getId());
         return "redirect:pupils";
     }

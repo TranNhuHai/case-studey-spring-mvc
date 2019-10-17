@@ -27,6 +27,11 @@
         </tr>
         <tr>
             <td>Class:</td>
+            <td>
+                <select th:field="*{learnClass}">
+                    <option th:each="c : ${learnClasses}" th:text="${c.name}" th:value="${c.id}"></option>
+                </select>
+            </td>
             <td></td>
             <td><input type="submit" value="Remove from list "></td>
         </tr>

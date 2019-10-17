@@ -30,6 +30,11 @@
         <tr>
             <td>Class:</td>
             <td>
+                <select th:field="*{learnClass}">
+                    <option th:each="c : ${learnClasses}" th:text="${c.name}" th:value="${c.id}"></option>
+                </select>
+            </td>
+            <td>
                 </select>
             </td>
         </tr>

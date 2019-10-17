@@ -11,4 +11,6 @@ public interface PupilService {
     void save(Pupil pupil);
 
     void remove(Long id);
+
+
 }

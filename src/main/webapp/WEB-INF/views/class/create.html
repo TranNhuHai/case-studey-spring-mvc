@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Create province</title>
+    <title>Create Class</title>
 </head>
 <body>
 <h1>Create Class</h1>
@@ -10,7 +10,7 @@
     <a href="/class">Class list</a>
 </p>
 <th:block th:if="${message}">
-    <p th:text="${message}"></p>
+    <p  style="color: red" th:text="${message}"></p>
 </th:block>
 <form th:action="@{/create-class}" th:object="${learnClass}" method="post">
     <table style="width: 50%; position: center">

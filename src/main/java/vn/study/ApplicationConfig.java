@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -22,6 +24,7 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
+import vn.study.formatter.LearnClassFormatter;
 import vn.study.service.LearnClassService;
 import vn.study.service.PupilService;
 import vn.study.service.impl.LearnClassServiceImpl;
@@ -37,6 +40,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @EnableJpaRepositories("vn.study.repository")
 @ComponentScan("vn.study")
+@EnableSpringDataWebSupport
 public class ApplicationConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
     private ApplicationContext applicationContext;
 
@@ -122,5 +126,8 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         return properties;
     }
-
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addFormatter(new LearnClassFormatter(applicationContext.getBean(LearnClassService.class)));
+    }
 }

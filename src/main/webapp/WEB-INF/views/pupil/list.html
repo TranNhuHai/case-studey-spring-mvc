@@ -9,24 +9,21 @@
 <h3>Pupils</h3>
 <table border="1" style="width: 85%">
     <tr>
-        <th>ID</th>
         <th>name</th>
         <th>Phone</th>
         <th>Mail</th>
-        <th>Class</th>
         <th>Edit</th>
         <th>Delete</th>
+        <th>Class</th>
 
     </tr>
     <tr th:each="pupil: ${pupils}">
-        <td th:text="${pupil.id}"></td>
         <td th:text="${pupil.getName()}"></td>
         <td th:text="${pupil.getPhone()}"></td>
         <td th:text="${pupil.getMail()}"></td>
-        <td th:text="${pupil.learnClass.name}"></td>
         <td><a th:href="@{edit-pupil/{id}(id=${pupil.getId()})}">edit</a></td>
         <td><a th:href="@{delete-pupil/{id}(id=${pupil.getId()})}">delete</a></td>
-
+        <td th:text="${pupil.learnClass.name}"></td>
     </tr>
 </table>
 </body>
